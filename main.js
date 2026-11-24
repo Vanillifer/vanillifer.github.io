@@ -3,6 +3,11 @@ const el=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=
 const heroesProject = projects.find(project => project.id === 'heroes-of-the-depth');
 if (detail && heroesProject && new URLSearchParams(location.search).get('id') === heroesProject.id) {
   detail.classList.add('heroes-detail');
+  const projectLinks = el('div', 'project-links');
+  const itchLink = el('a', 'btn', 'Play / download on itch.io');
+  itchLink.href = 'https://futuregames.itch.io/heroesofthedepth';
+  projectLinks.append(itchLink);
+  detail.querySelector('.tags').after(projectLinks);
   const placeholder = [...detail.querySelectorAll('p')].find(node => node.textContent === 'Additional project documentation and gameplay media will be added.');
   if (placeholder) placeholder.remove();
   const showcase = detail.querySelector('.media');
